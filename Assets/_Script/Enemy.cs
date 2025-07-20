@@ -41,8 +41,7 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = ((float)health / (float)maxHealth);
         if (health <= 0) 
         {
-            target.score += 1;
-            Debug.Log("Scored");
+            target.GetPoints(1);
             Destroy(gameObject);
         }
     }
