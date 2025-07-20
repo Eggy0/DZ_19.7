@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject player;
+    public void Play()
     {
-        
+       main.SetActive(false);
+       gameOver.SetActive(false);
+       Instantiate(player);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver()
     {
-        
+        gameOver.SetActive(true);
+    }
+    public void MainMenu()
+    {
+        main.SetActive(true);
+        gameOver.SetActive(false);
     }
 }
