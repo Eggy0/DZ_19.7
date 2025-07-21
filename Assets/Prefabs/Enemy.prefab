@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7099844394021217923}
+  - component: {fileID: 3447097967671275276}
+  - component: {fileID: 5959187791227214953}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 4774023462894649662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3447097967671275276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84525431579535119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a83c15f8f4b56c4c9064f4f69c1329e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  step: 1.5
+  healthBar: {fileID: 9152899607918903280}
+--- !u!54 &5959187791227214953
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84525431579535119}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &8771509673580747060
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,9 +90,8 @@ GameObject:
   - component: {fileID: 6141913369962326411}
   - component: {fileID: 7523616139962917048}
   - component: {fileID: 5639935148900643984}
-  - component: {fileID: 3283315030231618063}
   m_Layer: 0
-  m_Name: Torus
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5970,22 +6013,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &3283315030231618063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8771509673580747060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a83c15f8f4b56c4c9064f4f69c1329e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  target: {fileID: 6433786582852315521, guid: a29ff2ddeb282ba4081a3b3beaa56e07, type: 3}
-  step: 1
-  healthBar: {fileID: 9152899607918903280}
 --- !u!1001 &8025723673162216910
 PrefabInstance:
   m_ObjectHideFlags: 0

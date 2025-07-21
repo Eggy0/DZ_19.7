@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,14 +9,14 @@ using UnityEngine.UI;
 public class PlayerTurret : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private int maxHealth = 50;
+    [SerializeField] private int maxHealth = 0;
+    [SerializeField] private int score = 0;
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Image healthBar;
     [SerializeField] private TMP_Text scoreText;
 
     private (Collider player, Collider ammo) colliders;
-    internal int score = 0;
 
     private int health;
     void Start()
@@ -64,17 +65,19 @@ public class PlayerTurret : MonoBehaviour
         if (health <= 0)
         {
             //Trigger game over
+            GameManager.instance.GameOver();
             Destroy(gameObject);
         }
     }
 
-    public void GetPoints(int points)
+    public void GainPoints(int points)
     {
-        Debug.Log($"scoreText.text {scoreText.text}");
-        Debug.Log($"Current score: {score}");
         score += points;
-        Debug.Log($"Scored: {score}");
         scoreText.text = $"Score: {score}";
-        Debug.Log($"scoreText.text {scoreText.text}");
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }

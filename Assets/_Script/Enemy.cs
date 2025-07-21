@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public PlayerTurret target => GameManager.player;
     [SerializeField] private int maxHealth = 20;
-    [SerializeField] private PlayerTurret target;
+    //[SerializeField] private PlayerTurret target;
     [SerializeField] private float step;
     [SerializeField] private Image healthBar;
 
@@ -18,14 +19,23 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step * Time.deltaTime);
+        if (target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step * Time.deltaTime);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out Bullet bullet))
         {
+            Debug.Log("Enemy collision with bullet");
             TakeDamage(5);
+            Destroy(bullet);
         }
         if (collision.gameObject.TryGetComponent(out PlayerTurret player))
         {
@@ -41,7 +51,7 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = ((float)health / (float)maxHealth);
         if (health <= 0) 
         {
-            target.GetPoints(1);
+            target.GainPoints(1);
             Destroy(gameObject);
         }
     }

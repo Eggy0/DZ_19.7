@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         lifetime.current += Time.deltaTime;
-        if (lifetime.current >= lifetime.max)
+        if (lifetime.current >= lifetime.max || GameManager.player == null)
         {
             Destroy(gameObject);
         }
@@ -23,8 +23,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"Bullet collision with {collision.gameObject.name}");
         if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
+            Debug.Log("With enemy");
             Destroy(gameObject);
         }
     }
